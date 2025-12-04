@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>株式会社シンフォニー・オブ・ライフ — クォンチュア</title>
+<meta name="description" content="量子波動自動調整水「クォンチュア」｜株式会社シンフォニー・オブ・ライフ（代表 大西文太）" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%233b82f6'/%3E%3Cpath d='M30 60 C40 35, 60 35, 70 60' stroke='%23fff' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+<style>
+  /* リセット & 基本 */
+  :root{
+    --bg:#081226;
+    --glass: rgba(255,255,255,0.06);
+    --accent1: #6EE7B7;
+    --accent2: #60A5FA;
+    --muted: rgba(255,255,255,0.65);
+    --glass-2: rgba(255,255,255,0.03);
+    --card: rgba(255,255,255,0.04);
+    --glass-border: rgba(255,255,255,0.08);
+    --glass-blur: 10px;
+    font-family: "Inter", "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.08), transparent 8%),
+      radial-gradient(1000px 500px at 90% 90%, rgba(110,231,183,0.06), transparent 8%),
+      var(--bg);
+    color:#fff;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+  }
+
+  /* コンテナ */
+  .wrap{
+    max-width:1200px;
+    margin:48px auto;
+    padding:28px;
+  }
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:36px;
+  }
+  .brand{
+    display:flex;
+    gap:14px;
+    align-items:center;
+  }
+  .logo{
+    width:56px;
+    height:56px;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--accent2),var(--accent1));
+    display:grid;
+    place-items:center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5), inset 0 -6px 20px rgba(255,255,255,0.06);
+  }
+  .logo svg{width:34px;height:34px;filter:drop-shadow(0 4px 14px rgba(96,165,250,0.14));}
+  .company{
+    font-weight:700;
+    letter-spacing:0.02em;
+  }
+  .sub{font-size:13px;color:var(--muted);font-weight:600}
+
+  nav a{
+    color:var(--muted);
+    text-decoration:none;
+    margin-left:18px;
+    font-weight:600;
+  }
+  nav .btn{
+    margin-left:18px;
+    padding:10px 16px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border:1px solid var(--glass-border);
+    border-radius:10px;
+    backdrop-filter: blur(var(--glass-blur));
+    box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  }
+
+  /* ヒーロー */
+  .hero{
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:28px;
+    align-items:center;
+    margin-bottom:40px;
+  }
+  .hero-card{
+    padding:34px;
+    border-radius:16px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur));
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+  .kicker{font-weight:700;color:var(--accent1);letter-spacing:0.06em;margin-bottom:8px}
+  h1{margin:0 0 10px 0;font-size:34px;line-height:1.05}
+  p.lead{color:var(--muted);margin:0 0 18px 0;font-size:15px;max-width:64ch}
+
+  .cta{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .primary{
+    background:linear-gradient(90deg,var(--accent1),var(--accent2));
+    color:#04243a;
+    padding:12px 18px;
+    border-radius:12px;
+    font-weight:700;
+    border: none;
+    cursor:pointer;
+    box-shadow: 0 8px 26px rgba(96,165,250,0.12);
+  }
+  .ghost{
+    padding:10px 14px;
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:12px;
+    color:var(--muted);
+    cursor:pointer;
+    font-weight:700;
+  }
+
+  /* product card */
+  .mock{
+    position:relative;
+    height:320px;
+    border-radius:14px;
+    overflow:hidden;
+    background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.04);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .bottle{
+    width:210px;
+    transform: translateY(0) rotate(-6deg);
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+    transition: transform .6s cubic-bezier(.2,.9,.25,1);
+  }
+  .bottle:hover{transform: translateY(-6px) rotate(-4deg) scale(1.02)}
+
+  /* features */
+  .features{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:18px;
+    margin-bottom:36px;
+  }
+  .feature{
+    padding:18px;
+    border-radius:12px;
+    background:var(--card);
+    border:1px solid var(--glass-border);
+    backdrop-filter: blur(6px);
+    min-height:120px;
+  }
+  .feature h3{margin:8px 0 6px 0}
+  .feature p{color:var(--muted);margin:0;font-size:14px}
+
+  /* about / team */
+  .about{
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+    margin-bottom:36px;
+  }
+  .about .text{flex:1;padding:18px;border-radius:12px;background:var(--glass-2);border:1px solid var(--glass-border);backdrop-filter: blur(var(--glass-blur))}
+  .about .meta{
+    width:260px;padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+    border:1px solid var(--glass-border);
+    text-align:center;
+  }
+  .meta .person{font-weight:700;font-size:16px;margin-top:8px}
+  .meta .role{color:var(--muted);font-weight:600;margin-bottom:10px}
+
+  /* contact */
+  .contact{
+    padding:22px;border-radius:12px;background:var(--card);border:1px solid var(--glass-border);
+    display:flex;gap:18px;align-items:center;justify-content:space-between;
+  }
+  .contact form{display:flex;gap:10px;flex:1}
+  .contact input, .contact textarea{
+    background:transparent;border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:10px;color:#fff;outline:none;width:100%;
+  }
+  .contact button{padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#04243a;font-weight:700;cursor:pointer}
+
+  footer{margin-top:44px;color:var(--muted);font-size:13px;text-align:center}
+
+  /* responsive */
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr}
+    .features{grid-template-columns:repeat(2,1fr)}
+    .about{flex-direction:column}
+    .meta{width:100%}
+  }
+  @media (max-width:560px){
+    .features{grid-template-columns:1fr}
+  }
+
+  /* subtle animated particles (量子っぽい) */
+  .particles{
+    position:fixed;inset:0;pointer-events:none;z-index:0;mix-blend-mode:screen;
+  }
+  .particle{
+    position:absolute;border-radius:50%;opacity:0.9;
+    animation: float 8s ease-in-out infinite;
+    filter: blur(6px);
+  }
+  @keyframes float{
+    0%{transform: translateY(0) translateX(0) scale(1)}
+    50%{transform: translateY(-40px) translateX(20px) scale(1.15)}
+    100%{transform: translateY(0) translateX(0) scale(1)}
+  }
+
+  /* small utilities */
+  .muted{color:var(--muted)}
+  .small{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="particles" aria-hidden="true">
+  <!-- いくつかの動く粒子 -->
+  <div class="particle" style="width:220px;height:220px;left:5%;top:10%;background:radial-gradient(circle,#60A5FA,transparent);animation-duration:13s;opacity:0.06"></div>
+  <div class="particle" style="width:140px;height:140px;left:80%;top:70%;background:radial-gradient(circle,#6EE7B7,transparent);animation-duration:11s;opacity:0.06"></div>
+  <div class="particle" style="width:80px;height:80px;left:20%;top:78%;background:radial-gradient(circle,#A78BFA,transparent);animation-duration:9s;opacity:0.04"></div>
+</div>
+
+<div class="wrap" role="main">
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <!-- シンプルな波のロゴ -->
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 40 C20 18, 44 18, 52 40" stroke="#04243a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M16 44 C24 28, 40 28, 48 44" stroke="#04243a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+        </svg>
+      </div>
+      <div>
+        <div class="company">株式会社シンフォニー・オブ・ライフ</div>
+        <div class="sub">量子波動自動調整水「クォンチュア」</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#product">製品</a>
+      <a href="#features">特長</a>
+      <a href="#about">会社情報</a>
+      <a href="#contact" class="btn">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-card">
+      <div class="kicker">NEW · 先進プロダクト</div>
+      <h1>クォンチュア — 量子波動自動調整水</h1>
+      <p class="lead">微細な波動を可視化し、環境に応じて自動で調整される次世代の“水”。日々の暮らしに、そっと整いと上質さを。</p>
+
+      <div class="cta" style="margin-top:18px">
+        <button class="primary" id="buyBtn">購入・資料請求</button>
+        <button class="ghost" id="demoBtn">デモ動画を見る</button>
+      </div>
+
+      <div style="margin-top:20px" class="small muted">
+        会社: 株式会社シンフォニー・オブ・ライフ　代表取締役 大西文太
+      </div>
+    </div>
+
+<aside class="mock" aria-hidden="true">
+  <img src="./bottle.png"
+       alt="クォンチュアの商品イメージ"
+       width="200"
+       height="400"
+       style="object-fit: contain;">
+</aside>
+
+
+  <section id="features">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <h2 style="margin:0">特長</h2>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <h3>自動調整アルゴリズム</h3>
+        <p>環境に応じた微細な波動をリアルタイムで解析し、最適な水質バランスを維持する仕組み（ソフトウェア制御）。</p>
+      </div>
+
+      <div class="feature">
+        <h3>高級感のあるパッケージ</h3>
+        <p>ガラス感のあるボトルデザインと落ち着いたカラーで、日常に溶け込むラグジュアリーを演出。</p>
+      </div>
+
+      <div class="feature">
+        <h3>安全性・品質管理</h3>
+        <p>製造工程と品質検査のプロセスを重ね、安定した供給と一貫した品質を確保（詳細は資料参照）。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="product" style="margin-bottom:30px">
+    <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+      <div style="flex:1;min-width:260px">
+        <h2 style="margin:0 0 8px 0">製品情報 — クォンチュア</h2>
+        <p class="muted">ボトルラインアップ、仕様、利用シーンなどをわかりやすく提示。飲用・展示用・ギフト用などのモデルを展開予定。</p>
+
+        <ul style="color:var(--muted);margin-top:12px">
+          <li>容量バリエーション：250ml / 500ml / 1L</li>
+          <li>パッケージ：再利用可能なガラスボトル＋リサイクルパッケージ</li>
+          <li>用途例：日常の水分補給、特別なギフト、ウェルネス空間での演出</li>
+        </ul>
+      </div>
+
+      <div style="width:320px">
+        <div style="padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid var(--glass-border)">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <div style="font-weight:800">クォンチュア 500ml</div>
+              <div class="small muted" style="margin-top:6px">一般発売予定 — 詳細はお問い合わせ</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-weight:800;font-size:18px">¥1,980</div>
+              <div class="small muted">（税込・参考価格）</div>
+            </div>
+          </div>
+          <div style="margin-top:12px" class="small muted">購入前の資料請求・導入相談はフォームからどうぞ。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="text">
+      <h3 style="margin-top:0">会社情報</h3>
+      <p class="muted">株式会社シンフォニー・オブ・ライフは「日常に小さな整いを」をビジョンに、暮らしを豊かにする製品を設計・提供する企業です。代表 大西文太（おおにし ぶんた）。</p>
+
+      <p class="muted" style="margin-top:14px">本ページにある製品情報はデザイン案と公開用コンテンツの一部です。製品仕様や発売日・価格等は告知に基づいて更新されます。</p>
+    </div>
+
+    <aside class="meta">
+      <div style="font-size:13px;color:var(--muted)">代表取締役</div>
+      <div class="person">大西 文太</div>
+      <div class="role">CEO / Founder</div>
+      <div class="small muted" style="margin-top:8px">所在地：〒550-0002 大阪府大阪市西区江戸堀２丁目８−２９</div>
+    </aside>
+  </section>
+
+  <section id="contact" style="margin-bottom:24px">
+    <div class="contact">
+      <div style="flex:1">
+        <strong>お問い合わせ・資料請求</strong>
+        <div class="small muted" style="margin-top:6px">導入、卸売、メディア取材などはこちらから連絡をお願いします。</div>
+      </div>
+
+      <form id="contactForm" onsubmit="return false" style="flex:1;display:flex;gap:8px;align-items:center">
+        <input id="nameInput" placeholder="お名前" required style="max-width:180px"/>
+        <input id="emailInput" placeholder="メールアドレス" required style="max-width:260px"/>
+        <button id="sendBtn">送信</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div>© <span id="year"></span> 株式会社シンフォニー・オブ・ライフ — All rights reserved.</div>
+  </footer>
+</div>
+
+<script>
+  // 年をセット
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // 簡易インタラクション
+  document.getElementById('buyBtn').addEventListener('click', function(){
+    window.location.href = "./oneclickscam.html";
+  });
+  document.getElementById('demoBtn').addEventListener('click', function(){
+    // デモ用アニメーション再生 or 動画ポップアップ
+    showDemo();
+  });
+
+function showDemo(){
+  const overlay = document.createElement('div');
+  overlay.style.position='fixed';
+  overlay.style.inset=0;
+  overlay.style.background='rgba(2,6,23,0.8)';
+  overlay.style.display='grid';
+  overlay.style.placeItems='center';
+  overlay.style.zIndex=9999;
+
+  overlay.innerHTML = `
+  <div style="max-width:920px;width:92%;background:rgba(255,255,255,0.03);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.06)">
+    <div style="text-align:right">
+      <button id="closeDemo" style="background:transparent;border:0;color:#fff;font-weight:700;cursor:pointer">閉じる</button>
+    </div>
+    <video id="demoVideo" style="width:100%;border-radius:8px" controls autoplay>
+      <source src="./demo.mp4" type="video/mp4">
+      動画再生できん。
+    </video>
+  </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelector('#closeDemo').addEventListener('click', ()=>{
+    const video = overlay.querySelector('#demoVideo');
+    if(video) video.pause();
+    overlay.remove();
+  });
+}
+
+
+  // フォーム（ダミー）
+  document.getElementById('sendBtn').addEventListener('click', function(e){
+    const name = document.getElementById('nameInput').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
+    if(!name || !email){
+      alert('名前とメールを正しく入力してください。');
+      return;
+    }
+    // デモ送信挙動（実運用ではAPIにPOSTする）
+    alert(name + '、どこにも送られへんで？');
+    document.getElementById('nameInput').value='';
+    document.getElementById('emailInput').value='';
+  });
+
+  // アクセントの小アニメ：バブルがクリックで広がる
+  document.addEventListener('click', function(e){
+    const x = e.clientX, y = e.clientY;
+    const el = document.createElement('span');
+    el.style.position='fixed';
+    el.style.left = x+'px';
+    el.style.top = y+'px';
+    el.style.width = el.style.height = '12px';
+    el.style.borderRadius='50%';
+    el.style.background='radial-gradient(circle, rgba(110,231,183,0.9), rgba(96,165,250,0.7))';
+    el.style.opacity='0.9';
+    el.style.zIndex=10000;
+    el.style.transform='translate(-50%,-50%) scale(0.6)';
+    el.style.transition='transform .8s ease-out, opacity .8s ease-out';
+    document.body.appendChild(el);
+    requestAnimationFrame(()=> el.style.transform='translate(-50%,-50%) scale(6)');
+    requestAnimationFrame(()=> el.style.opacity='0');
+    setTimeout(()=> el.remove(),900);
+  });
+</script>
+</body>
+</html>
