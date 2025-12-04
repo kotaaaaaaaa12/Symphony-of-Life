@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会社情報 - 株式会社シンフォニー・オブ・ライフ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* ハンバーガーメニュー */
+        .hamburger {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #2c5f8d;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, #2c5f8d 0%, #4a90c8 100%);
+            transition: right 0.3s;
+            z-index: 999;
+            padding: 80px 30px;
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            transition: padding-left 0.3s;
+            font-size: 1.1em;
+        }
+
+        .nav-menu a:hover {
+            padding-left: 10px;
+        }
+
+        /* ヘッダー */
+        .page-header {
+            background: linear-gradient(135deg, #2c5f8d 0%, #4a90c8 100%);
+            color: white;
+            padding: 100px 20px 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+        }
+
+        /* 会社情報 */
+        .company {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .company-info {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+        .info-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #2c5f8d;
+        }
+
+        /* フッター */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2em;
+            }
+
+            .info-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ハンバーガーメニュー -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- ナビゲーション -->
+    <nav class="nav-menu" id="navMenu">
+        <a href="index.html">ホーム</a>
+        <a href="product.html">製品紹介</a>
+        <a href="company.html">会社情報</a>
+        <a href="contact.html">お問い合わせ</a>
+    </nav>
+
+    <!-- ヘッダー -->
+    <header class="page-header">
+        <h1>会社情報</h1>
+    </header>
+
+    <!-- 会社情報 -->
+    <section class="company">
+        <div class="company-info">
+            <div class="info-row">
+                <div class="info-label">会社名</div>
+                <div>株式会社シンフォニー・オブ・ライフ</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">代表取締役</div>
+                <div>大西 文太</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">所在地</div>
+                <div>〒550-0002<br>大阪府大阪市西区江戸堀２丁目８−２９</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">事業内容</div>
+                <div>量子波動調整水の製造・販売</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <p>&copy; 2024 株式会社シンフォニー・オブ・ライフ All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
