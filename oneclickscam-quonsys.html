@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>緊急通知</title>
+<style>
+  body {
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 70px;
+    color: red;
+    font-weight: bold;
+    text-shadow: 0 0 40px red;
+  }
+
+  .msg {
+    font-size: 35px;
+    color: yellow;
+    margin: 30px 0;
+    font-weight: bold;
+    line-height: 1.8;
+    text-shadow: 0 0 15px yellow;
+  }
+
+  .price {
+    font-size: 80px;
+    font-weight: bold;
+    color: lime;
+    text-shadow: 0 0 25px lime;
+    margin: 20px 0;
+  }
+
+  .subtext {
+    font-size: 28px;
+    color: orange;
+    margin: 20px 0;
+    text-shadow: 0 0 8px orange;
+  }
+
+  .box {
+    margin: 50px auto;
+    width: 90%;
+    max-width: 700px;
+    border: 8px solid yellow;
+    background: black;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 20px yellow;
+  }
+
+  .countdown {
+    font-size: 65px;
+    color: red;
+    text-shadow: 0 0 25px red;
+  }
+
+  .blink {
+    animation: blink 0.5s infinite alternate;
+  }
+
+  @keyframes blink {
+    from { opacity: 1; }
+    to { opacity: .2; }
+  }
+</style>
+</head>
+
+<body>
+
+<h1 class="blink">⚠ 支払い確認通知 ⚠</h1>
+
+<div class="msg"><strong style="color: cyan;">量子波動自動調整室「クォンシス」</strong><br>
+への入会お申し込みありがとうございます。
+</div>
+
+<div class="price">請求額：300,000 Z$</div>
+
+<div class="subtext">
+※この請求は自動処理されています。<br>
+支払いは<strong style="color:red;">2日以内</strong>に完了してください。
+</div>
+
+
+<div class="box">
+  <div style="font-size:30px; margin-bottom:10px;">
+  ⏳ 支払い期限まで残り ⏳
+  </div>
+  <div id="timer" class="countdown blink">--:--:--.--</div>
+</div>
+
+<script>
+  let remaining = 2 * 24 * 60 * 60 * 1000; // 2日 → ミリ秒
+
+  function updateTimer() {
+    remaining -= 10;
+
+    if (remaining < 0) remaining = 0;
+
+    const ms = remaining % 1000;
+    const totalSeconds = Math.floor(remaining / 1000);
+    const sec = totalSeconds % 60;
+    const min = Math.floor(totalSeconds / 60) % 60;
+    const hr = Math.floor(totalSeconds / 3600) % 24;
+    const day = Math.floor(totalSeconds / 86400);
+
+    const formatted = 
+      `${day}日 ${String(hr).padStart(2,'0')}:${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}.${String(ms).padStart(2,'0').slice(0,2)}`;
+
+    document.getElementById('timer').textContent = formatted;
+  }
+
+  setInterval(updateTimer, 10);
+</script>
+
+</body>
+</html>
